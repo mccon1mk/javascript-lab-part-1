@@ -26,7 +26,7 @@ function playTheGame() {
       grantStartingHealthPoints = 10;
     }
   }
-  if (grantDefeatCounter <= 0) {
+  if (userStartingHealthPoints > 0 && grantDefeatCounter >= 3) {
     console.log(person + " is the winner");
   } else {
     console.log("Grant the Mighty Chicken wins.");

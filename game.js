@@ -20,13 +20,7 @@ function startCombat() {
       grantStartingHealthPoints = grantStartingHealthPoints - getDamage();
 
       console.log(
-        "Grant the Mighty Chicken has " +
-          grantStartingHealthPoints +
-          " health left."
-      );
-
-      console.log(
-        person + " has " + userStartingHealthPoints + " health left."
+        `${person} has ${userStartingHealthPoints} health left and Grant has ${grantStartingHealthPoints} health left.`
       );
 
       if (grantStartingHealthPoints <= 0) {
@@ -36,7 +30,7 @@ function startCombat() {
     }
   }
   if (userStartingHealthPoints > 0 && grantDefeatCounter >= 3) {
-    console.log(person + " is the winner");
+    console.log(`${person} wins!`);
   } else {
     console.log("Grant the Mighty Chicken wins.");
   }

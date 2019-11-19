@@ -1,8 +1,8 @@
-function getRandomNumber() {
-  return Math.floor(Math.random() * 2) + 1;
+function getDamage() {
+  return Math.floor(Math.random() * 5) + 1;
 }
 
-function playTheGame() {
+function startCombat() {
   var person = prompt("Please enter your name");
 
   let userStartingHealthPoints = 40;
@@ -10,20 +10,29 @@ function playTheGame() {
   let grantDefeatCounter = 0;
 
   while (userStartingHealthPoints > 0 && grantDefeatCounter < 3) {
-    userStartingHealthPoints = userStartingHealthPoints - getRandomNumber();
-    grantStartingHealthPoints = grantStartingHealthPoints - getRandomNumber();
+    //* ask them if they want to attack or quit
+    var quitGame = prompt("Would you like to attack or quit?");
 
-    console.log(
-      "Grant the Mighty Chicken has " +
-        grantStartingHealthPoints +
-        " health left."
-    );
+    if (quitGame.toUpperCase() == "QUIT") {
+      break;
+    } else if (quitGame.toUpperCase() == "ATTACK") {
+      userStartingHealthPoints = userStartingHealthPoints - getDamage();
+      grantStartingHealthPoints = grantStartingHealthPoints - getDamage();
 
-    console.log(person + " has " + userStartingHealthPoints + " health left.");
+      console.log(
+        "Grant the Mighty Chicken has " +
+          grantStartingHealthPoints +
+          " health left."
+      );
 
-    if (grantStartingHealthPoints <= 0) {
-      grantDefeatCounter++;
-      grantStartingHealthPoints = 10;
+      console.log(
+        person + " has " + userStartingHealthPoints + " health left."
+      );
+
+      if (grantStartingHealthPoints <= 0) {
+        grantDefeatCounter++;
+        grantStartingHealthPoints = 10;
+      }
     }
   }
   if (userStartingHealthPoints > 0 && grantDefeatCounter >= 3) {
@@ -37,6 +46,6 @@ function startGame() {
   var playGame = prompt("Do you want to play?");
 
   if (playGame.toUpperCase() == "YES") {
-    playTheGame();
+    startCombat();
   }
 }
